@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert PDF</title>
+</head>
+<body>
+    <h1>Convert PDF</h1>
+    <form method="post" enctype="multipart/form-data" action="{% url 'upload_file' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if image_path %}
+    <h2>Converted Image</h2>
+    <img src="{{ image_path }}" alt="Converted Image">
+
+    <form method="post" action="{% url 'run_ocr' %}">
+        {% csrf_token %}
+        <input type="hidden" name="image_path" value="{{ image_path }}">
+        <button type="submit">Run OCR</button>
+    </form>
+    {% endif %}
+
+    {% if ocr_results %}
+    <h2>OCR Results</h2>
+    <p>{{ ocr_results }}</p>
+    {% endif %}
+</body>
+</html>
