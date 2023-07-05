@@ -1,0 +1,12 @@
+names:
+- profile
+- competance
+- experience
+- formation
+- langues
+- centre
+- contact
+nc: 7
+test: /content/datasets/test/images
+train: /content/datasets/train/images
+val: /content/datasets/valid/images
